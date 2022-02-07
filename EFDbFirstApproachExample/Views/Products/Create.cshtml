@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Create Product</h2>
+
+<form action="/products/create" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="ProductName">Product Name</label>
+            <input type="text" class="form-control" id="ProductName" placeholder="Product Name" name="ProductName" value="" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Price">Price</label>
+            <input type="text" class="form-control" id="Price" placeholder="Price" name="Price" value="" />
+        </div>
+    </div> 
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="DateOfPurchae">Date of Purchase</label>
+            <input type="date" class="form-control" id="DateOfPurchase" placeholder="Date of Purchase" name="DateOfPurchase" value="" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="AvailabilityStatus">Availability Status</label>
+            <input type="text" class="form-control" id="AvailabilityStatus" placeholder="Availability Status" name="AvailabilityStatus" value="" />
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="CategoryID">Category ID</label>
+            <input type="text" class="form-control" id="CategoryID" placeholder="Category ID" name="CategoryID" value="" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="BrandID">Brand ID</label>
+            <input type="text" class="form-control" id="BrandID" placeholder="Brand ID" name="BrandID" value="" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="Active" name="Active" value="true"/>
+            <label class="form-check-label" for="Active">Active</label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Create</button>
+    <a class="btn btn-danger" href="/products/index">Cancel</a>
+</form>

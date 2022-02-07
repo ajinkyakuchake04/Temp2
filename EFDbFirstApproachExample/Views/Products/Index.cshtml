@@ -1,0 +1,175 @@
+﻿@model List<EFDbFirstApproachExample.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Products</h2>
+<a href="/products/create">Create</a>
+
+<div class="container">
+    <input id="myInput" type="text" placeholder="Search.." width="200px">
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Date of Purchase</th>
+            <th>Availability Status</th>
+            <th>Category ID</th>
+            <th>Brand ID</th>
+            <th>Active</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody id="myTable">
+            <tr>
+                <td>@item.ProductID</td>
+                <td>@item.ProductName</td>
+                <td>@item.Price.Value.ToString("C")</td>
+                <td>@item.DateOfPurchase.Value.ToString("yyyy/MM/dd")</td>
+                <td>@item.AvailabilityStatus</td>
+                <td>@item.CategoryID</td>
+                <td>@item.BrandID</td>
+                <td>@item.Active</td>
+                <td><a href="/products/details/@item.ProductID">Details</a></td>
+                <td><a href="/products/edit/@item.ProductID">Edit</a></td>
+                <td><a href="/products/delete/@item.ProductID">Delete</a></td>
+            </tr>
+            </tbody>
+        }
+    </table>
+
+    <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
+@*<h2>Products</h2>
+    <a href="/products/create">Create</a>
+
+    <form class="form-inline" action="/products/index">
+        <label for="search">Search</label>
+        <input type="search" class="form-control" id="search" name="search" placeholder="Search" value="@ViewBag.search" />
+        <button type="submit" class="btn btn-primary">GO</button>
+    </form>
+    <table class="table">
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Date of Purchase</th>
+            <th>Availability Status</th>
+            <th>Category ID</th>
+            <th>Brand ID</th>
+            <th>Active</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductID</td>
+                <td>@item.ProductName</td>
+                <td>@item.Price.Value.ToString("C")</td>
+                <td>@item.DateOfPurchase.Value.ToString("yyyy/MM/dd")</td>
+                <td>@item.AvailabilityStatus</td>
+                <td>@item.CategoryID</td>
+                <td>@item.BrandID</td>
+                <td>@item.Active</td>
+                <td><a href="/products/details/@item.ProductID">Details</a></td>
+                <td><a href="/products/edit/@item.ProductID">Edit</a></td>
+                <td><a href="/products/delete/@item.ProductID">Delete</a></td>
+            </tr>
+        }
+    </table>
+*@
+
+
+@*
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>Bootstrap Example</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+    <div class="container">
+      <h2>Filterable Table</h2>
+      <p>Type something in the input field to search the table for first names, last names or emails:</p>
+      <input class="form-control" id="myInput" type="text" placeholder="Search..">
+      <br>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@mail.com</td>
+          </tr>
+          <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@greatstuff.com</td>
+          </tr>
+          <tr>
+            <td>Anja</td>
+            <td>Ravendale</td>
+            <td>a_r@test.com</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+    </div>
+
+    <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+
+    </body>
+    </html>
+
+*@
